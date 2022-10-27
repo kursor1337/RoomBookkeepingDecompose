@@ -10,14 +10,14 @@ import retrofit2.http.Query
 interface CryptoApi {
 
     @GET("coins/markets")
-    fun getCryptoCurrencyInfoList(
+    suspend fun getCryptoCurrencyInfoList(
         @Query("vs_currency") vsCurrency: String
-    ): Call<List<CryptoInfo>>
+    ): List<CryptoInfo>
 
     @GET("coins/{id}")
-    fun getCryptoCurrencyDescription(
+    suspend fun getCryptoCurrencyDescription(
         @Path("id") id: String,
         @Query("localization") localization: Boolean = false
-    ): Call<CryptoDescription>
+    ): CryptoDescription
 
 }
