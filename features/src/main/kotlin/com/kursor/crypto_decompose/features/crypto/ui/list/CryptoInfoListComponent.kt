@@ -1,4 +1,4 @@
-package com.kursor.crypto_decompose.features.crypto.ui.details
+package com.kursor.crypto_decompose.features.crypto.ui.list
 
 import com.kursor.crypto.model.entities.CryptoInfo
 import com.kursor.crypto_decompose.features.crypto.domain.Currency

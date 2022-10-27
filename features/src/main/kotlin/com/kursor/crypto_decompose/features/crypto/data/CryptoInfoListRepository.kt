@@ -1,11 +1,11 @@
 package com.kursor.crypto_decompose.features.crypto.data
 
-import com.kursor.crypto.model.entities.CryptoDescription
 import com.kursor.crypto.model.entities.CryptoInfo
-import me.aartikov.replica.single.Replica
+import com.kursor.crypto_decompose.features.crypto.domain.Currency
+import me.aartikov.replica.keyed.KeyedReplica
 
 interface CryptoInfoListRepository {
 
-    val cryptoInfoListReplica: Replica<List<CryptoInfo>>
+    val cryptoInfoListByVsCurrencyReplica: KeyedReplica<Currency, List<CryptoInfo>>
 
 }

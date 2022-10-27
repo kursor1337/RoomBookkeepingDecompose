@@ -1,4 +1,4 @@
-package com.kursor.crypto_decompose.features.crypto.ui.list
+package com.kursor.crypto_decompose.features.crypto.ui.description
 
 import com.kursor.crypto.model.entities.CryptoDescription
 import me.aartikov.replica.single.Loadable

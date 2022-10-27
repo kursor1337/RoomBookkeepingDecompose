@@ -1,4 +1,4 @@
-package com.kursor.crypto_decompose.features.crypto.ui.details
+package com.kursor.crypto_decompose.features.crypto.ui.list
 
 import android.os.Parcelable
 import androidx.compose.runtime.getValue
@@ -10,18 +10,22 @@ import com.kursor.crypto_decompose.core.error_handling.ErrorHandler
 import com.kursor.crypto_decompose.core.utils.observe
 import com.kursor.crypto_decompose.core.utils.persistent
 import com.kursor.crypto_decompose.features.crypto.domain.Currency
-import com.kursor.crypto_decompose.features.pokemons.domain.PokemonTypeId
 import kotlinx.parcelize.Parcelize
-import me.aartikov.replica.single.Replica
+import me.aartikov.replica.keyed.KeyedReplica
 
 class RealCryptoInfoListComponent(
     componentContext: ComponentContext,
     val onOutput: (CryptoInfoListComponent.Output) -> Unit,
-    val cryptoInfoListReplica: Replica<List<CryptoInfo>>,
+    private val cryptoInfoListReplica: KeyedReplica<Currency, List<CryptoInfo>>,
     errorHandler: ErrorHandler
 ) : ComponentContext by componentContext, CryptoInfoListComponent {
 
-    override val cryptoInfoListState by cryptoInfoListReplica.observe(lifecycle, errorHandler)
+    override val cryptoInfoListState by cryptoInfoListReplica
+        .observe(
+            lifecycle,
+            errorHandler,
+            key = { selectedCurrency }
+        )
 
     override var selectedCurrency by mutableStateOf(Currency.USD)
         private set
@@ -34,19 +38,19 @@ class RealCryptoInfoListComponent(
     }
 
     override fun onCurrencyClick(currency: Currency) {
-        TODO("Not yet implemented")
+        selectedCurrency = currency
     }
 
     override fun onCryptoClick(cryptoId: String) {
-        TODO("Not yet implemented")
+        onOutput(CryptoInfoListComponent.Output.CryptoDescriptionRequested(cryptoId))
     }
 
     override fun onRetryClick() {
-        TODO("Not yet implemented")
+        cryptoInfoListReplica.refresh(selectedCurrency)
     }
 
     override fun onRefresh() {
-        TODO("Not yet implemented")
+        cryptoInfoListReplica.refresh(selectedCurrency)
     }
 
     @Parcelize

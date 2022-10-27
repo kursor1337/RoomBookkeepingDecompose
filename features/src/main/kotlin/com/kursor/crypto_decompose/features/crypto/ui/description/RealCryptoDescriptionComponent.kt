@@ -1,4 +1,4 @@
-package com.kursor.crypto_decompose.features.crypto.ui.list
+package com.kursor.crypto_decompose.features.crypto.ui.description
 
 import androidx.compose.runtime.getValue
 import com.arkivanov.decompose.ComponentContext

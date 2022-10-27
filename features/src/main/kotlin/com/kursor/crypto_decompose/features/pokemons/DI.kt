@@ -1,11 +1,10 @@
 package com.kursor.crypto_decompose.features.pokemons
 
 import com.arkivanov.decompose.ComponentContext
-import me.aartikov.replica.algebra.withKey
-import org.koin.core.component.get
-import org.koin.dsl.module
 import com.kursor.crypto_decompose.core.ComponentFactory
 import com.kursor.crypto_decompose.core.network.NetworkApiFactory
+import com.kursor.crypto_decompose.features.crypto.ui.CryptoComponent
+import com.kursor.crypto_decompose.features.crypto.ui.RealCryptoComponent
 import com.kursor.crypto_decompose.features.pokemons.data.PokemonApi
 import com.kursor.crypto_decompose.features.pokemons.data.PokemonRepository
 import com.kursor.crypto_decompose.features.pokemons.data.PokemonRepositoryImpl
@@ -16,6 +15,9 @@ import com.kursor.crypto_decompose.features.pokemons.ui.details.PokemonDetailsCo
 import com.kursor.crypto_decompose.features.pokemons.ui.details.RealPokemonDetailsComponent
 import com.kursor.crypto_decompose.features.pokemons.ui.list.PokemonListComponent
 import com.kursor.crypto_decompose.features.pokemons.ui.list.RealPokemonListComponent
+import me.aartikov.replica.algebra.withKey
+import org.koin.core.component.get
+import org.koin.dsl.module
 
 val pokemonsModule = module {
     single<PokemonApi> { get<NetworkApiFactory>().createUnauthorizedApi() }
