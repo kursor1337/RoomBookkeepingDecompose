@@ -7,4 +7,10 @@ interface CryptoDescriptionComponent {
 
     val cryptoDescriptionState: Loadable<CryptoDescription>
 
+    fun onBackButtonPressed()
+
+    sealed interface Output {
+        object BackButtonPressed : Output
+    }
+
 }

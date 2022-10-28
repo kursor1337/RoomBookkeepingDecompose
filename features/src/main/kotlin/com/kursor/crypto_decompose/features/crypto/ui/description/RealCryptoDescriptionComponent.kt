@@ -9,10 +9,15 @@ import me.aartikov.replica.single.Replica
 
 class RealCryptoDescriptionComponent(
     componentContext: ComponentContext,
+    private val onOutput: (CryptoDescriptionComponent.Output) -> Unit,
     private val cryptoReplica: Replica<CryptoDescription>,
     errorHandler: ErrorHandler
 ) : ComponentContext by componentContext, CryptoDescriptionComponent {
 
     override val cryptoDescriptionState by cryptoReplica.observe(lifecycle, errorHandler)
+
+    override fun onBackButtonPressed() {
+        onOutput(CryptoDescriptionComponent.Output.BackButtonPressed)
+    }
 
 }

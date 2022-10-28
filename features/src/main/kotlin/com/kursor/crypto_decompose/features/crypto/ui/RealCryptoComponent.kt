@@ -2,14 +2,12 @@ package com.kursor.crypto_decompose.features.crypto.ui
 
 import android.os.Parcelable
 import com.arkivanov.decompose.ComponentContext
-import com.arkivanov.decompose.router.stack.ChildStack
-import com.arkivanov.decompose.router.stack.StackNavigation
-import com.arkivanov.decompose.router.stack.childStack
-import com.arkivanov.decompose.router.stack.push
+import com.arkivanov.decompose.router.stack.*
 import com.arkivanov.decompose.value.getValue
 import com.kursor.crypto_decompose.core.ComponentFactory
 import com.kursor.crypto_decompose.features.crypto.createCryptoDescriptionComponent
 import com.kursor.crypto_decompose.features.crypto.createCryptoInfoListComponent
+import com.kursor.crypto_decompose.features.crypto.ui.description.CryptoDescriptionComponent
 import com.kursor.crypto_decompose.features.crypto.ui.list.CryptoInfoListComponent
 import kotlinx.parcelize.Parcelize
 
@@ -38,23 +36,31 @@ class RealCryptoComponent(
                     onOutput = ::onCryptoListOutput
                 )
             )
-
         }
 
         is ChildConfig.Description -> {
             CryptoComponent.Child.Description(
                 componentFactory.createCryptoDescriptionComponent(
                     componentContext,
-                    cryptoId = config.cryptoId
+                    cryptoId = config.cryptoId,
+                    onOutput = ::onCryptoDescriptionOutput
                 )
             )
         }
     }
 
-    fun onCryptoListOutput(output: CryptoInfoListComponent.Output) {
+    private fun onCryptoListOutput(output: CryptoInfoListComponent.Output) {
         when (output) {
             is CryptoInfoListComponent.Output.CryptoDescriptionRequested -> {
                 navigation.push(ChildConfig.Description(output.cryptoId))
+            }
+        }
+    }
+
+    private fun onCryptoDescriptionOutput(output: CryptoDescriptionComponent.Output) {
+        when (output) {
+            is CryptoDescriptionComponent.Output.BackButtonPressed -> {
+                navigation.pop()
             }
         }
     }
