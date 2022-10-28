@@ -1,6 +1,6 @@
 package com.kursor.crypto_decompose.features.crypto.ui.list
 
-import com.kursor.crypto.model.entities.CryptoInfo
+import com.kursor.crypto_decompose.features.crypto.domain.CryptoInfo
 import com.kursor.crypto_decompose.features.crypto.domain.Currency
 import me.aartikov.replica.single.Loadable
 

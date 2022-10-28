@@ -7,7 +7,6 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -18,18 +17,15 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
-import com.kursor.crypto.ConnectionStatus
-import com.kursor.crypto.R
-import com.kursor.crypto.ui.screens.LoadingScreen
-import com.kursor.crypto.ui.screens.SomethingWentWrongScreen
+import com.kursor.crypto_decompose.core.widget.SwipeRefreshLceWidget
 
 @Composable
-fun CryptoCurrencyDescriptionScreen(
-    cryptoDescriptionComponent: CryptoDescriptionComponent,
+fun CryptoDescriptionUi(
+    component: CryptoDescriptionComponent,
     modifier: Modifier = Modifier
 ) {
 
-    val cryptoDescription = cryptoDescriptionComponent.cryptoDescriptionState
+    val cryptoDescription = component.cryptoDescriptionState
 
     val connectionStatus =
         viewModel.connectionStatusLiveData.observeAsState(ConnectionStatus.LOADING)
@@ -44,12 +40,12 @@ fun CryptoCurrencyDescriptionScreen(
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     IconButton(
                         modifier = Modifier.padding(6.dp),
-                        onClick = { navController.popBackStack() }
+                        onClick = { component.onBackButtonPressed() }
                     ) {
                         Icon(imageVector = Icons.Filled.ArrowBack, contentDescription = "back")
                     }
                     Text(
-                        text = cryptoName,
+                        text = cryptoDescription.name,
                         modifier = Modifier.padding(
                             vertical = 12.dp,
                             horizontal = 12.dp
@@ -67,46 +63,39 @@ fun CryptoCurrencyDescriptionScreen(
             }
         }
     ) {
-        when (connectionStatus.value) {
-            ConnectionStatus.LOADING -> LoadingScreen(
-                modifier = Modifier.fillMaxSize()
-            )
-            ConnectionStatus.SUCCESS -> {
-                LazyColumn(
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    item {
-                        Image(
-                            painter = rememberAsyncImagePainter(cryptoImageLink),
-                            contentDescription = "crypto icon",
-                            modifier = Modifier
-                                .padding(12.dp)
-                                .size(120.dp)
-                        )
-
-                        TextBlock(
-                            title = stringResource(id = R.string.crypto_currency_description),
-                            text = cryptoDescription.value?.description?.en ?: "",
-                            modifier = Modifier.padding(6.dp)
-                        )
-
-                        TextBlock(
-                            title = stringResource(id = R.string.crypto_currency_categories),
-                            text = cryptoDescription.value?.categories?.joinToString()
-                                ?: "",
-                            modifier = Modifier.padding(6.dp)
-                        )
-                    }
-                }
-
-            }
-            ConnectionStatus.FAILURE -> SomethingWentWrongScreen(
-                modifier = Modifier.fillMaxSize()
+        SwipeRefreshLceWidget(
+            state = component.cryptoDescriptionState,
+            onRefresh = component::refresh,
+            onRetryClick = component::refresh
+        ) { cryptoDescription, refreshing ->
+            LazyColumn(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = modifier.padding(it)
             ) {
-                viewModel.loadData(cryptoId)
+                item {
+                    Image(
+                        painter = rememberAsyncImagePainter(cryptoImageLink),
+                        contentDescription = "crypto icon",
+                        modifier = Modifier
+                            .padding(12.dp)
+                            .size(120.dp)
+                    )
+
+                    TextBlock(
+                        title = stringResource(id = R.string.crypto_currency_description),
+                        text = cryptoDescription.value?.description?.en ?: "",
+                        modifier = Modifier.padding(6.dp)
+                    )
+
+                    TextBlock(
+                        title = stringResource(id = R.string.crypto_currency_categories),
+                        text = cryptoDescription.value?.categories?.joinToString()
+                            ?: "",
+                        modifier = Modifier.padding(6.dp)
+                    )
+                }
             }
         }
-
     }
 }
 

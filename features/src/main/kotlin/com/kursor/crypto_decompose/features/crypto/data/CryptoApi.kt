@@ -1,8 +1,7 @@
 package com.kursor.crypto_decompose.features.crypto.data
 
-import com.kursor.crypto.model.entities.CryptoDescription
-import com.kursor.crypto.model.entities.CryptoInfo
-import retrofit2.Call
+import com.kursor.crypto_decompose.features.crypto.domain.CryptoDescription
+import com.kursor.crypto_decompose.features.crypto.domain.CryptoInfo
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

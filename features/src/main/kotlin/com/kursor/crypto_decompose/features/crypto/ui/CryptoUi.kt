@@ -8,11 +8,11 @@ import com.kursor.crypto_decompose.features.crypto.ui.list.CryptoInfoListUi
 
 @Composable
 fun CryptoUi(
-    cryptoComponent: CryptoComponent,
+    component: CryptoComponent,
     modifier: Modifier
 ) {
 
-    Children(stack = cryptoComponent.childStack, modifier) { child ->
+    Children(stack = component.childStack, modifier) { child ->
         when (val instance = child.instance) {
             is CryptoComponent.Child.List -> CryptoInfoListUi(instance.component)
             is CryptoComponent.Child.Description -> CryptoDescriptionUi(instance.component)

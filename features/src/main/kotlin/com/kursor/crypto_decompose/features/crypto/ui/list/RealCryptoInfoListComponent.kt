@@ -5,7 +5,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import com.arkivanov.decompose.ComponentContext
-import com.kursor.crypto.model.entities.CryptoInfo
+import com.kursor.crypto_decompose.features.crypto.domain.CryptoInfo
 import com.kursor.crypto_decompose.core.error_handling.ErrorHandler
 import com.kursor.crypto_decompose.core.utils.observe
 import com.kursor.crypto_decompose.core.utils.persistent

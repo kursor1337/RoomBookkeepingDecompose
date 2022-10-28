@@ -1,4 +1,4 @@
-package com.kursor.crypto.model.entities
+package com.kursor.crypto_decompose.features.crypto.domain
 
 import kotlinx.serialization.Serializable
 
