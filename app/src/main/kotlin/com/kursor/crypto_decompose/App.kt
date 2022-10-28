@@ -6,7 +6,6 @@ import org.koin.core.Koin
 import com.kursor.crypto_decompose.core.ComponentFactory
 import com.kursor.crypto_decompose.core.KoinProvider
 import com.kursor.crypto_decompose.core.debug_tools.DebugTools
-import ru.mobileup.template.BuildConfig
 import timber.log.Timber
 
 class App : Application(), KoinProvider {
