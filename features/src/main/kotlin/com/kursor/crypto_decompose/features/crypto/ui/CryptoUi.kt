@@ -9,7 +9,7 @@ import com.kursor.crypto_decompose.features.crypto.ui.list.CryptoInfoListUi
 @Composable
 fun CryptoUi(
     component: CryptoComponent,
-    modifier: Modifier
+    modifier: Modifier = Modifier
 ) {
 
     Children(stack = component.childStack, modifier) { child ->

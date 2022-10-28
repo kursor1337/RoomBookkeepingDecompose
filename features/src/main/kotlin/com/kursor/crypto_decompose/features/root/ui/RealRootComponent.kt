@@ -11,6 +11,7 @@ import kotlinx.parcelize.Parcelize
 import com.kursor.crypto_decompose.core.ComponentFactory
 import com.kursor.crypto_decompose.core.createMessageComponent
 import com.kursor.crypto_decompose.core.utils.toComposeState
+import com.kursor.crypto_decompose.features.crypto.createCryptoComponent
 import com.kursor.crypto_decompose.features.pokemons.createPokemonsComponent
 
 class RealRootComponent(
@@ -22,7 +23,7 @@ class RealRootComponent(
 
     override val childStack: ChildStack<*, RootComponent.Child> by childStack(
         source = navigation,
-        initialConfiguration = ChildConfig.Pokemons,
+        initialConfiguration = ChildConfig.Crypto,
         handleBackButton = true,
         childFactory = ::createChild
     ).toComposeState(lifecycle)
@@ -40,11 +41,21 @@ class RealRootComponent(
                 componentFactory.createPokemonsComponent(componentContext)
             )
         }
+
+        is ChildConfig.Crypto -> {
+            RootComponent.Child.Crypto(
+                componentFactory.createCryptoComponent(componentContext)
+            )
+        }
     }
 
     private sealed interface ChildConfig : Parcelable {
 
         @Parcelize
         object Pokemons : ChildConfig
+
+        @Parcelize
+        object Crypto : ChildConfig
+
     }
 }

@@ -12,6 +12,7 @@ import com.kursor.crypto_decompose.core.message.ui.FakeMessageComponent
 import com.kursor.crypto_decompose.core.message.ui.MessageUi
 import com.kursor.crypto_decompose.core.theme.AppTheme
 import com.kursor.crypto_decompose.core.utils.createFakeChildStack
+import com.kursor.crypto_decompose.features.crypto.ui.CryptoUi
 import com.kursor.crypto_decompose.features.pokemons.ui.FakePokemonsComponent
 import com.kursor.crypto_decompose.features.pokemons.ui.PokemonsUi
 
@@ -25,6 +26,7 @@ fun RootUi(
     Children(component.childStack, modifier) { child ->
         when (val instance = child.instance) {
             is RootComponent.Child.Pokemons -> PokemonsUi(instance.component)
+            is RootComponent.Child.Crypto -> CryptoUi(instance.component)
         }
     }
 
