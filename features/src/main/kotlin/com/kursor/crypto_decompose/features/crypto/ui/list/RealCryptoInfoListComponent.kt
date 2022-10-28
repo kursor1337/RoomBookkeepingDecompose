@@ -41,8 +41,8 @@ class RealCryptoInfoListComponent(
         selectedCurrency = currency
     }
 
-    override fun onCryptoClick(cryptoId: String) {
-        onOutput(CryptoInfoListComponent.Output.CryptoDescriptionRequested(cryptoId))
+    override fun onCryptoClick(cryptoInfo: CryptoInfo) {
+        onOutput(CryptoInfoListComponent.Output.CryptoDescriptionRequested(cryptoInfo))
     }
 
     override fun onRetryClick() {

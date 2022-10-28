@@ -12,14 +12,14 @@ interface CryptoInfoListComponent {
 
     fun onCurrencyClick(currency: Currency)
 
-    fun onCryptoClick(cryptoId: String)
+    fun onCryptoClick(cryptoInfo: CryptoInfo)
 
     fun onRetryClick()
 
     fun onRefresh()
 
     sealed interface Output {
-        data class CryptoDescriptionRequested(val cryptoId: String) : Output
+        data class CryptoDescriptionRequested(val cryptoInfo: CryptoInfo) : Output
     }
 
 }

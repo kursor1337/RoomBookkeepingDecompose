@@ -42,7 +42,11 @@ class RealCryptoComponent(
             CryptoComponent.Child.Description(
                 componentFactory.createCryptoDescriptionComponent(
                     componentContext,
-                    cryptoId = config.cryptoId,
+                    cryptoAdditionalInfo = CryptoDescriptionComponent.CryptoAdditionalInfo(
+                        config.args.cryptoId,
+                        config.args.cryptoName,
+                        config.args.cryptoImageLink
+                    ),
                     onOutput = ::onCryptoDescriptionOutput
                 )
             )
@@ -52,7 +56,15 @@ class RealCryptoComponent(
     private fun onCryptoListOutput(output: CryptoInfoListComponent.Output) {
         when (output) {
             is CryptoInfoListComponent.Output.CryptoDescriptionRequested -> {
-                navigation.push(ChildConfig.Description(output.cryptoId))
+                navigation.push(
+                    ChildConfig.Description(
+                        ChildConfig.Description.Args(
+                            cryptoId = output.cryptoInfo.id,
+                            cryptoName = output.cryptoInfo.name,
+                            cryptoImageLink = output.cryptoInfo.image
+                        )
+                    )
+                )
             }
         }
     }
@@ -71,7 +83,16 @@ class RealCryptoComponent(
         object List : ChildConfig
 
         @Parcelize
-        data class Description(val cryptoId: String) : ChildConfig
+        data class Description(val args: Args) : ChildConfig {
+
+            @Parcelize
+            data class Args(
+                val cryptoId: String,
+                val cryptoName: String,
+                val cryptoImageLink: String
+            ) : Parcelable
+
+        }
 
     }
 

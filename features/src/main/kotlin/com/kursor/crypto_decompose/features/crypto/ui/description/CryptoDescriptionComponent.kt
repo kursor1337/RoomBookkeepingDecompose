@@ -7,7 +7,7 @@ interface CryptoDescriptionComponent {
 
     val cryptoDescriptionState: Loadable<CryptoDescription>
 
-    val cryptoId: String
+    val cryptoAdditionalInfo: CryptoAdditionalInfo
 
     fun onBackButtonPressed()
 
@@ -16,5 +16,11 @@ interface CryptoDescriptionComponent {
     sealed interface Output {
         object BackButtonPressed : Output
     }
+
+    class CryptoAdditionalInfo(
+        val id: String,
+        val name: String,
+        val imageLink: String
+    )
 
 }

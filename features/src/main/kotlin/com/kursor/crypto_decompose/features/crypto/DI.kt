@@ -56,17 +56,18 @@ fun ComponentFactory.createCryptoInfoListComponent(
 
 fun ComponentFactory.createCryptoDescriptionComponent(
     componentContext: ComponentContext,
-    cryptoId: String,
+    cryptoAdditionalInfo: CryptoDescriptionComponent.CryptoAdditionalInfo,
     onOutput: (CryptoDescriptionComponent.Output) -> Unit
 ): CryptoDescriptionComponent {
     val cryptoDescriptionReplica = get<CryptoDescriptionRepository>()
         .cryptoDescriptionByIdReplica
-        .withKey(cryptoId)
+        .withKey(cryptoAdditionalInfo.id)
 
     return RealCryptoDescriptionComponent(
         componentContext,
         onOutput,
         cryptoDescriptionReplica,
+        cryptoAdditionalInfo,
         errorHandler = get()
     )
 }

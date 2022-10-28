@@ -17,7 +17,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
+import com.kursor.crypto_decompose.core.widget.RefreshingProgress
 import com.kursor.crypto_decompose.core.widget.SwipeRefreshLceWidget
+import ru.mobileup.template.features.R
 
 @Composable
 fun CryptoDescriptionUi(
@@ -25,12 +27,8 @@ fun CryptoDescriptionUi(
     modifier: Modifier = Modifier
 ) {
 
-    val cryptoDescription = component.cryptoDescriptionState
-
-    val connectionStatus =
-        viewModel.connectionStatusLiveData.observeAsState(ConnectionStatus.LOADING)
-
-    viewModel.loadData(cryptoId)
+    val cryptoName = component.cryptoAdditionalInfo.name
+    val cryptoImageLink = component.cryptoAdditionalInfo.imageLink
 
     Scaffold(
         topBar = {
@@ -45,7 +43,7 @@ fun CryptoDescriptionUi(
                         Icon(imageVector = Icons.Filled.ArrowBack, contentDescription = "back")
                     }
                     Text(
-                        text = cryptoDescription.name,
+                        text = cryptoName,
                         modifier = Modifier.padding(
                             vertical = 12.dp,
                             horizontal = 12.dp
@@ -82,19 +80,19 @@ fun CryptoDescriptionUi(
                     )
 
                     TextBlock(
-                        title = stringResource(id = R.string.crypto_currency_description),
-                        text = cryptoDescription.value?.description?.en ?: "",
+                        title = stringResource(id = R.string.crypto_description),
+                        text = cryptoDescription.description.en,
                         modifier = Modifier.padding(6.dp)
                     )
 
                     TextBlock(
-                        title = stringResource(id = R.string.crypto_currency_categories),
-                        text = cryptoDescription.value?.categories?.joinToString()
-                            ?: "",
+                        title = stringResource(id = R.string.crypto_categories),
+                        text = cryptoDescription.categories.joinToString(),
                         modifier = Modifier.padding(6.dp)
                     )
                 }
             }
+            RefreshingProgress(active = refreshing, modifier = Modifier.padding(top = 4.dp))
         }
     }
 }
