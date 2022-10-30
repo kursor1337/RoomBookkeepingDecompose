@@ -17,9 +17,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
+import com.kursor.crypto_decompose.features.R
 import com.kursor.crypto_decompose.core.widget.RefreshingProgress
 import com.kursor.crypto_decompose.core.widget.SwipeRefreshLceWidget
-import ru.mobileup.template.features.R
 
 @Composable
 fun CryptoDescriptionUi(

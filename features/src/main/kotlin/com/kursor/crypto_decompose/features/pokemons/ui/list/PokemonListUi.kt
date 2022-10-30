@@ -20,7 +20,7 @@ import com.kursor.crypto_decompose.core.theme.AppTheme
 import com.kursor.crypto_decompose.core.widget.EmptyPlaceholder
 import com.kursor.crypto_decompose.core.widget.RefreshingProgress
 import com.kursor.crypto_decompose.core.widget.SwipeRefreshLceWidget
-import ru.mobileup.template.features.R
+import com.kursor.crypto_decompose.features.R
 import com.kursor.crypto_decompose.features.pokemons.domain.Pokemon
 import com.kursor.crypto_decompose.features.pokemons.domain.PokemonId
 import com.kursor.crypto_decompose.features.pokemons.domain.PokemonType

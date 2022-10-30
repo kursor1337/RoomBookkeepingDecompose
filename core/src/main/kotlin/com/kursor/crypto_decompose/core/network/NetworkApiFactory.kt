@@ -1,6 +1,7 @@
 package com.kursor.crypto_decompose.core.network
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
+import com.kursor.crypto_decompose.core.BuildConfig
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 import okhttp3.Interceptor
@@ -9,7 +10,6 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import com.kursor.crypto_decompose.core.debug_tools.DebugTools
-import ru.mobileup.template.core.BuildConfig
 import timber.log.Timber
 import java.util.concurrent.TimeUnit
 

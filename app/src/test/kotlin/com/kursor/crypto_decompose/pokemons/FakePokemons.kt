@@ -1,6 +1,6 @@
 package com.kursor.crypto_decompose.pokemons
 
-import ru.mobileup.template.features.pokemons.domain.*
+import com.kursor.crypto_decompose.features.pokemons.domain.*
 
 object FakePokemons {
 

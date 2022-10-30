@@ -1,8 +1,8 @@
 package com.kursor.crypto_decompose.core.error_handling
 
+import com.kursor.crypto_decompose.core.R
+import com.kursor.crypto_decompose.core.BuildConfig
 import me.aartikov.sesame.localizedstring.LocalizedString
-import ru.mobileup.template.core.BuildConfig
-import ru.mobileup.template.core.R
 
 /**
  * Returns human readable messages for exceptions.

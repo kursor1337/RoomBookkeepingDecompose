@@ -6,10 +6,10 @@ import me.aartikov.replica.single.Loadable
 import org.junit.Assert.assertTrue
 import org.junit.Test
 import org.junit.runner.RunWith
-import ru.mobileup.template.core.error_handling.ServerException
-import ru.mobileup.template.features.pokemons.createPokemonListComponent
-import ru.mobileup.template.features.pokemons.ui.list.PokemonListComponent
-import ru.mobileup.template.utils.*
+import com.kursor.crypto_decompose.core.error_handling.ServerException
+import com.kursor.crypto_decompose.features.pokemons.createPokemonListComponent
+import com.kursor.crypto_decompose.features.pokemons.ui.list.PokemonListComponent
+import com.kursor.crypto_decompose.utils.*
 import kotlin.test.assertEquals
 
 @RunWith(AndroidJUnit4::class)

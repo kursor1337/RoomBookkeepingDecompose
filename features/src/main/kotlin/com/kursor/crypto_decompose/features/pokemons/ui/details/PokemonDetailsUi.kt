@@ -20,6 +20,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
+import com.kursor.crypto_decompose.features.R
 import com.kursor.crypto_decompose.core.theme.AppTheme
 import com.kursor.crypto_decompose.core.widget.RefreshingProgress
 import com.kursor.crypto_decompose.core.widget.SwipeRefreshLceWidget
@@ -28,7 +29,6 @@ import com.kursor.crypto_decompose.features.pokemons.domain.PokemonId
 import com.kursor.crypto_decompose.features.pokemons.domain.PokemonType
 import com.kursor.crypto_decompose.features.pokemons.ui.list.PokemonTypeItem
 import me.aartikov.replica.single.Loadable
-import ru.mobileup.template.features.R
 
 @Composable
 fun PokemonDetailsUi(

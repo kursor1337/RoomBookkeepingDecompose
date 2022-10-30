@@ -1,11 +1,11 @@
 package com.kursor.crypto_decompose.core.error_handling
 
+import com.kursor.crypto_decompose.core.R
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import me.aartikov.sesame.localizedstring.LocalizedString
-import ru.mobileup.template.core.R
 
 /**
  * Allows to run a function safely (with error handing).

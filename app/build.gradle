@@ -9,7 +9,7 @@ android {
     compileSdk target_sdk_version
 
     defaultConfig {
-        applicationId "ru.mobileup.template"
+        applicationId "com.kursor.crypto_decompose"
         minSdk min_sdk_version
         targetSdk target_sdk_version
         versionCode 1 // Can use ci.gradle to set versionCode

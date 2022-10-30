@@ -20,15 +20,16 @@ class RealCryptoInfoListComponent(
     errorHandler: ErrorHandler
 ) : ComponentContext by componentContext, CryptoInfoListComponent {
 
+
+    override var selectedCurrency by mutableStateOf(Currency.USD)
+        private set
+
     override val cryptoInfoListState by cryptoInfoListReplica
         .observe(
             lifecycle,
             errorHandler,
             key = { selectedCurrency }
         )
-
-    override var selectedCurrency by mutableStateOf(Currency.USD)
-        private set
 
     init {
         persistent(
