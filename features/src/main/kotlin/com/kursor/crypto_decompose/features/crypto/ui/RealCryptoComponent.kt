@@ -1,15 +1,17 @@
 package com.kursor.crypto_decompose.features.crypto.ui
 
 import android.os.Parcelable
+import androidx.compose.runtime.getValue
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.router.stack.*
-import com.arkivanov.decompose.value.getValue
 import com.kursor.crypto_decompose.core.ComponentFactory
+import com.kursor.crypto_decompose.core.utils.toComposeState
 import com.kursor.crypto_decompose.features.crypto.createCryptoDescriptionComponent
 import com.kursor.crypto_decompose.features.crypto.createCryptoInfoListComponent
 import com.kursor.crypto_decompose.features.crypto.ui.description.CryptoDescriptionComponent
 import com.kursor.crypto_decompose.features.crypto.ui.list.CryptoInfoListComponent
 import kotlinx.parcelize.Parcelize
+import timber.log.Timber
 
 class RealCryptoComponent(
     componentContext: ComponentContext,
@@ -23,7 +25,7 @@ class RealCryptoComponent(
         initialConfiguration = ChildConfig.List,
         handleBackButton = true,
         childFactory = ::createChild
-    )
+    ).toComposeState(lifecycle)
 
     private fun createChild(
         config: ChildConfig,
