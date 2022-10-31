@@ -2,4 +2,5 @@
 <resources>
     <string name="crypto_description">Description</string>
     <string name="crypto_categories">Categories</string>
+    <string name="crypto_list">Crypto List</string>
 </resources>
