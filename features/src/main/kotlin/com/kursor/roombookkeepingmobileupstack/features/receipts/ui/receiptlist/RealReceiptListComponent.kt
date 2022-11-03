@@ -8,6 +8,8 @@ import com.arkivanov.decompose.ComponentContext
 import com.kursor.roombookkeepingmobileupstack.features.receipts.domain.Receipt
 import com.kursor.roombookkeepingmobileupstack.features.receipts.domain.usecases.receipt.crud.DeleteReceiptUseCase
 import com.kursor.roombookkeepingmobileupstack.features.receipts.domain.usecases.receipt.crud.GetReceiptListUseCase
+import kotlinx.coroutines.launch
+import me.aartikov.replica.decompose.coroutineScope
 
 class RealReceiptListComponent(
     componentContext: ComponentContext,
@@ -20,6 +22,14 @@ class RealReceiptListComponent(
 
     override val selectedReceiptsState: MutableList<Receipt> = mutableStateListOf()
 
+    private val coroutineScope = lifecycle.coroutineScope()
+
+    init {
+        coroutineScope.launch {
+            receiptListState = getReceiptListUseCase()
+        }
+    }
+
     override fun selectReceipt(receipt: Receipt) {
         selectedReceiptsState += receipt
     }
@@ -29,7 +39,9 @@ class RealReceiptListComponent(
     }
 
     override fun deleteSelectedReceipts() {
-
+        coroutineScope.launch {
+            selectedReceiptsState.forEach { deleteReceiptUseCase(it) }
+        }
     }
 
 

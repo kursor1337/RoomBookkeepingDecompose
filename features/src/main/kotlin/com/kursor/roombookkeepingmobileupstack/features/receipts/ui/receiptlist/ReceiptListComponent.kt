@@ -23,7 +23,11 @@ interface ReceiptListComponent {
     fun deleteSelectedReceipts()
 
     sealed interface Output {
-        class ReceiptEditingRequested(val receiptId: ReceiptId)
+
+        class ReceiptEditingRequested(val receiptId: ReceiptId) : Output
+
+        object PersonsEditingRequested : Output
+
     }
 
 }
