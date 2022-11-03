@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.kursor.crypto_decompose">
+    package="com.kursor.roombookkeepingmobileupstack">
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
-        android:name="com.kursor.crypto_decompose.App"
+        android:name="com.kursor.roombookkeepingmobileupstack.App"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -16,7 +16,7 @@
         tools:targetApi="n">
 
         <activity
-            android:name=".MainActivity"
+            android:name="com.kursor.roombookkeepingmobileupstack.MainActivity"
             android:configChanges="density|fontScale|keyboard|keyboardHidden|layoutDirection|locale|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|touchscreen|uiMode"
             android:exported="true"
             android:launchMode="singleTask"

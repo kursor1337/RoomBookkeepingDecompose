@@ -71,6 +71,8 @@ dependencies {
 
     // Debugging
     implementation libs.timber
+    implementation 'androidx.room:room-common:2.4.3'
+    implementation 'androidx.room:room-ktx:2.4.3'
 }
 
 // Usage: ./gradlew generateModuleGraph
