@@ -1,4 +1,4 @@
-package com.kursor.roombookkeepingmobileupstack.features.receipts.presentation.layouts.receipts
+package com.kursor.roombookkeepingmobileupstack.features.receipts.ui.receipt
 
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.*
@@ -21,9 +21,9 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.kursor.roombookkeeping.R
 import com.kursor.roombookkeepingmobileupstack.features.receipts.domain.Receipt
-import com.kursor.roombookkeepingmobileupstack.features.receipts.presentation.layouts.Layouts
-import com.kursor.roombookkeepingmobileupstack.features.receipts.presentation.special.ListItemLayout
-import com.kursor.roombookkeepingmobileupstack.features.receipts.presentation.special.RoomBookkeepingTopAppBar
+import com.kursor.roombookkeepingmobileupstack.features.receipts.ui.Layouts
+import com.kursor.roombookkeepingmobileupstack.features.receipts.ui.special.ListItemLayout
+import com.kursor.roombookkeepingmobileupstack.features.receipts.ui.special.RoomBookkeepingTopAppBar
 import com.kursor.roombookkeeping.viewModels.receipt.ReceiptListViewModel
 import org.koin.androidx.compose.getViewModel
 import java.text.SimpleDateFormat

@@ -1,4 +1,4 @@
-package com.kursor.roombookkeepingmobileupstack.features.receipts.presentation.special
+package com.kursor.roombookkeepingmobileupstack.features.receipts.ui.special
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavType
@@ -6,14 +6,14 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.kursor.roombookkeepingmobileupstack.features.receipts.presentation.layouts.Layouts
-import com.kursor.roombookkeepingmobileupstack.features.receipts.presentation.layouts.SplashScreenLayout
-import com.kursor.roombookkeepingmobileupstack.features.receipts.presentation.layouts.persons.PersonLayout
-import com.kursor.roombookkeepingmobileupstack.features.receipts.presentation.layouts.persons.PersonListLayout
-import com.kursor.roombookkeepingmobileupstack.features.receipts.presentation.layouts.prices.PriceLayout
-import com.kursor.roombookkeepingmobileupstack.features.receipts.presentation.layouts.receipts.ReceiptLayout
-import com.kursor.roombookkeepingmobileupstack.features.receipts.presentation.layouts.receipts.ReceiptListLayout
-import com.kursor.roombookkeepingmobileupstack.features.receipts.presentation.special.dontGoHere.NothingImportantLayout
+import com.kursor.roombookkeepingmobileupstack.features.receipts.ui.Layouts
+import com.kursor.roombookkeepingmobileupstack.features.receipts.ui.layouts.SplashScreenLayout
+import com.kursor.roombookkeepingmobileupstack.features.receipts.ui.person.PersonLayout
+import com.kursor.roombookkeepingmobileupstack.features.receipts.ui.person.PersonListLayout
+import com.kursor.roombookkeepingmobileupstack.features.receipts.ui.price.PriceLayout
+import com.kursor.roombookkeepingmobileupstack.features.receipts.ui.receipt.ReceiptLayout
+import com.kursor.roombookkeepingmobileupstack.features.receipts.ui.receipt.ReceiptListLayout
+import com.kursor.roombookkeepingmobileupstack.features.receipts.ui.special.dontGoHere.NothingImportantLayout
 
 @Composable
 fun MainLayout() {

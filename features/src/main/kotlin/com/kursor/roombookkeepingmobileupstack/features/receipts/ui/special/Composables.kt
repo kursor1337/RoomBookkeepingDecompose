@@ -1,4 +1,4 @@
-package com.kursor.roombookkeepingmobileupstack.features.receipts.presentation.special
+package com.kursor.roombookkeepingmobileupstack.features.receipts.ui.special
 
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Spacer

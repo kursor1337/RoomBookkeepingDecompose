@@ -1,8 +1,8 @@
-package com.kursor.roombookkeepingmobileupstack.features.receipts.presentation.layouts
+package com.kursor.roombookkeepingmobileupstack.features.receipts.ui
 
-import com.kursor.roombookkeepingmobileupstack.features.receipts.presentation.layouts.Layouts.Args.PERSON_ID
-import com.kursor.roombookkeepingmobileupstack.features.receipts.presentation.layouts.Layouts.Args.PRICE_INDEX
-import com.kursor.roombookkeepingmobileupstack.features.receipts.presentation.layouts.Layouts.Args.RECEIPT_ID
+import com.kursor.roombookkeepingmobileupstack.features.receipts.ui.Layouts.Args.PERSON_ID
+import com.kursor.roombookkeepingmobileupstack.features.receipts.ui.Layouts.Args.PRICE_INDEX
+import com.kursor.roombookkeepingmobileupstack.features.receipts.ui.Layouts.Args.RECEIPT_ID
 
 sealed class Layouts(val start: String, vararg args: String) {
 

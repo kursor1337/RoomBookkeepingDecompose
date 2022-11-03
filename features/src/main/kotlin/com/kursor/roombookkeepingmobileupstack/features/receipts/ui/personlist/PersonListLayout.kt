@@ -1,4 +1,4 @@
-package com.kursor.roombookkeepingmobileupstack.features.receipts.presentation.layouts.persons
+package com.kursor.roombookkeepingmobileupstack.features.receipts.ui.person
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -10,20 +10,15 @@ import androidx.compose.material.FabPosition
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
-import com.kursor.roombookkeeping.R
 import com.kursor.roombookkeepingmobileupstack.features.receipts.domain.Person
-import com.kursor.roombookkeepingmobileupstack.features.receipts.presentation.layouts.Layouts
-import com.kursor.roombookkeepingmobileupstack.features.receipts.presentation.special.ListItemLayout
-import com.kursor.roombookkeepingmobileupstack.features.receipts.presentation.special.RoomBookkeepingTopAppBar
-import com.kursor.roombookkeeping.viewModels.person.PersonListViewModel
-import org.koin.androidx.compose.getViewModel
+import com.kursor.roombookkeepingmobileupstack.features.receipts.ui.Layouts
+import com.kursor.roombookkeepingmobileupstack.features.receipts.ui.special.ListItemLayout
+import com.kursor.roombookkeepingmobileupstack.features.receipts.ui.special.RoomBookkeepingTopAppBar
 
 @Composable
 fun PersonListLayout(

@@ -1,4 +1,4 @@
-package com.kursor.roombookkeepingmobileupstack.features.receipts.presentation.layouts.persons
+package com.kursor.roombookkeepingmobileupstack.features.receipts.ui.person
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
@@ -6,14 +6,10 @@ import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
-import com.kursor.roombookkeepingmobileupstack.features.receipts.presentation.special.RoomBookkeepingTopAppBar
-import com.kursor.roombookkeeping.viewModels.person.PersonViewModel
-import org.koin.androidx.compose.getViewModel
+import com.kursor.roombookkeepingmobileupstack.features.receipts.ui.special.RoomBookkeepingTopAppBar
 
 @Composable
 fun PersonLayout(

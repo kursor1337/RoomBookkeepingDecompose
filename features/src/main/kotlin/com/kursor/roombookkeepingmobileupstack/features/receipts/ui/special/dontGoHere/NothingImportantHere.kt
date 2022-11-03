@@ -1,4 +1,4 @@
-package com.kursor.roombookkeepingmobileupstack.features.receipts.presentation.special.dontGoHere
+package com.kursor.roombookkeepingmobileupstack.features.receipts.ui.special.dontGoHere
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.fillMaxSize

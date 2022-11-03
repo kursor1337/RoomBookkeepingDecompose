@@ -1,4 +1,4 @@
-package com.kursor.roombookkeepingmobileupstack.features.receipts.data.repositories
+package com.kursor.roombookkeepingmobileupstack.features.receipts.domain.repositories
 
 import com.kursor.roombookkeepingmobileupstack.features.receipts.domain.Person
 

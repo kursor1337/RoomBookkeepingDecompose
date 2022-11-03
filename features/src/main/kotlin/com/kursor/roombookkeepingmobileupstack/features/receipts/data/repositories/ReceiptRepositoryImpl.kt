@@ -6,6 +6,8 @@ import com.kursor.roombookkeepingmobileupstack.features.receipts.data.database.d
 import com.kursor.roombookkeepingmobileupstack.features.receipts.data.database.daos.ReceiptDao
 import com.kursor.roombookkeepingmobileupstack.features.receipts.data.database.entities.PriceEntity
 import com.kursor.roombookkeepingmobileupstack.features.receipts.data.database.entities.ReceiptEntity
+import com.kursor.roombookkeepingmobileupstack.features.receipts.domain.ReceiptId
+import com.kursor.roombookkeepingmobileupstack.features.receipts.domain.repositories.ReceiptRepository
 
 class ReceiptRepositoryImpl(
     val receiptDao: ReceiptDao,
@@ -26,8 +28,9 @@ class ReceiptRepositoryImpl(
     override suspend fun delete(receipt: Receipt) =
         receiptDao.delete(receipt.convertToDatabaseEntity())
 
-    suspend fun ReceiptEntity.convertToModelEntity(): Receipt = Receipt(
-        id = this.id,
+
+    private suspend fun ReceiptEntity.convertToModelEntity(): Receipt = Receipt(
+        id = ReceiptId(this.id),
         name = this.name,
         dateTime = this.dateTime,
         priceList = this.priceList.map { priceEntity ->
@@ -39,15 +42,15 @@ class ReceiptRepositoryImpl(
         }
     )
 
-    suspend fun Receipt.convertToDatabaseEntity(): ReceiptEntity = ReceiptEntity(
-        id = this.id,
+    private fun Receipt.convertToDatabaseEntity(): ReceiptEntity = ReceiptEntity(
+        id = this.id.id,
         name = this.name,
         dateTime = this.dateTime,
         priceList = this.priceList.map { price ->
             PriceEntity(
                 name = price.name,
                 value = price.value,
-                personIds = price.persons.map { person -> person.id }
+                personIds = price.persons.map { person -> person.id.id }
             )
         }
     )
