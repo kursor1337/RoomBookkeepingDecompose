@@ -10,19 +10,19 @@ interface ReceiptListComponent {
 
     val selectedReceiptsState: List<Receipt>
 
-    fun selectReceipt(receipt: Receipt)
-
-    fun unselectReceipt(receipt: Receipt)
-
-    fun changeSelectionForReceipt(receipt: Receipt) {
-        if (receipt in selectedReceiptsState) {
-            unselectReceipt(receipt)
-        } else selectReceipt(receipt)
-    }
+    fun changeSelectionForReceipt(receipt: Receipt)
 
     fun deleteSelectedReceipts()
 
+    fun onAddReceiptButtonClick()
+
+    fun onReceiptClick(receiptId: ReceiptId)
+
+    fun onPersonButtonClicked()
+
     sealed interface Output {
+
+        object ReciptAddRequested : Output
 
         class ReceiptEditingRequested(val receiptId: ReceiptId) : Output
 

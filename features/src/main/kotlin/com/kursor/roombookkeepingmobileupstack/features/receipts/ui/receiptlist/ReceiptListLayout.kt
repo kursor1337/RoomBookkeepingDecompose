@@ -1,4 +1,4 @@
-package com.kursor.roombookkeepingmobileupstack.features.receipts.ui.receipt
+package com.kursor.roombookkeepingmobileupstack.features.receipts.ui.receiptlist
 
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.*
@@ -9,7 +9,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
@@ -18,41 +17,38 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
-import com.kursor.roombookkeeping.R
+import com.kursor.roombookkeepingmobileupstack.features.R
 import com.kursor.roombookkeepingmobileupstack.features.receipts.domain.Receipt
-import com.kursor.roombookkeepingmobileupstack.features.receipts.ui.Layouts
 import com.kursor.roombookkeepingmobileupstack.features.receipts.ui.special.ListItemLayout
 import com.kursor.roombookkeepingmobileupstack.features.receipts.ui.special.RoomBookkeepingTopAppBar
-import com.kursor.roombookkeeping.viewModels.receipt.ReceiptListViewModel
-import org.koin.androidx.compose.getViewModel
 import java.text.SimpleDateFormat
 import java.util.*
 
 @Composable
 fun ReceiptListLayout(
-    navController: NavController,
-    receiptListViewModel: ReceiptListViewModel = getViewModel<ReceiptListViewModel>().also {
-        it.loadData()
-    }
+    component: ReceiptListComponent,
+    modifier: Modifier = Modifier
 ) {
 
-    val receiptList = receiptListViewModel.receiptListLiveData.observeAsState(initial = emptyList())
-    val selectedReceipts =
-        receiptListViewModel.selectedReceiptsLiveData.observeAsState(initial = emptyList())
+    val receiptList = component.receiptListState
+    val selectedReceipts = component.selectedReceiptsState
 
     Scaffold(
         floatingActionButton = {
             Button(onClick = {
-                navController.navigate(Layouts.ReceiptLayout.withArgs(-1))
+                component.onAddReceiptButtonClick()
             }) {
                 Text(text = stringResource(id = R.string.add_receipt))
             }
         },
         topBar = {
-            RoomBookkeepingTopAppBar(navController = navController) {
-                if (selectedReceipts.value.isNotEmpty()) {
-                    IconButton(onClick = { receiptListViewModel.deleteSelectedReceipts() }) {
+            RoomBookkeepingTopAppBar {
+                if (selectedReceipts.isNotEmpty()) {
+                    IconButton(
+                        onClick = {
+                            component.deleteSelectedReceipts()
+                        }
+                    ) {
                         Icon(
                             imageVector = Icons.Filled.Delete,
                             contentDescription = "DeleteReceipts"
@@ -61,15 +57,17 @@ fun ReceiptListLayout(
                 }
                 IconButton(
                     onClick = {
-                        navController.navigate(Layouts.PersonListLayout.route)
+                        component.onPersonButtonClicked()
                     }) {
                     Icon(imageVector = Icons.Filled.Person, contentDescription = "PersonList")
                 }
             }
         }
     ) {
-        LazyColumn {
-            itemsIndexed(receiptList.value) { index, receipt ->
+        LazyColumn(
+            modifier = Modifier.padding(it)
+        ) {
+            itemsIndexed(receiptList) { index, receipt ->
                 ListItemLayout(index = index) {
                     SelectableReceiptListItemLayout(
                         receipt = receipt,
@@ -77,20 +75,16 @@ fun ReceiptListLayout(
                             .pointerInput(Unit) {
                                 detectTapGestures(
                                     onLongPress = {
-                                        receiptListViewModel.changeSelectionForReceipt(receipt)
+                                        component.changeSelectionForReceipt(receipt)
                                     },
                                     onTap = {
-                                        if (selectedReceipts.value.isEmpty())
-                                            navController.navigate(
-                                                Layouts.ReceiptLayout.withArgs(
-                                                    receipt.id
-                                                )
-                                            )
-                                        else receiptListViewModel.changeSelectionForReceipt(receipt)
+                                        if (selectedReceipts.isEmpty())
+                                            component.onReceiptClick(receipt.id)
+                                        else component.changeSelectionForReceipt(receipt)
                                     }
                                 )
                             },
-                        selectionCriteria = { receipt in selectedReceipts.value }
+                        selectionCriteria = { receipt in selectedReceipts }
                     )
                 }
             }

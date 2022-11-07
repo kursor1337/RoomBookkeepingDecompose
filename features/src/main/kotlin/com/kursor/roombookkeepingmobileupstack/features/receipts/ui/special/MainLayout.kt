@@ -12,7 +12,7 @@ import com.kursor.roombookkeepingmobileupstack.features.receipts.ui.person.Perso
 import com.kursor.roombookkeepingmobileupstack.features.receipts.ui.person.PersonListLayout
 import com.kursor.roombookkeepingmobileupstack.features.receipts.ui.price.PriceLayout
 import com.kursor.roombookkeepingmobileupstack.features.receipts.ui.receipt.ReceiptLayout
-import com.kursor.roombookkeepingmobileupstack.features.receipts.ui.receipt.ReceiptListLayout
+import com.kursor.roombookkeepingmobileupstack.features.receipts.ui.receiptlist.ReceiptListLayout
 import com.kursor.roombookkeepingmobileupstack.features.receipts.ui.special.dontGoHere.NothingImportantLayout
 
 @Composable

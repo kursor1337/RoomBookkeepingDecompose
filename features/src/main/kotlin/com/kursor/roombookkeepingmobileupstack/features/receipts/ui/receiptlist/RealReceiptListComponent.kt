@@ -6,6 +6,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import com.arkivanov.decompose.ComponentContext
 import com.kursor.roombookkeepingmobileupstack.features.receipts.domain.Receipt
+import com.kursor.roombookkeepingmobileupstack.features.receipts.domain.ReceiptId
 import com.kursor.roombookkeepingmobileupstack.features.receipts.domain.usecases.receipt.crud.DeleteReceiptUseCase
 import com.kursor.roombookkeepingmobileupstack.features.receipts.domain.usecases.receipt.crud.GetReceiptListUseCase
 import kotlinx.coroutines.launch
@@ -30,12 +31,18 @@ class RealReceiptListComponent(
         }
     }
 
-    override fun selectReceipt(receipt: Receipt) {
+    private fun selectReceipt(receipt: Receipt) {
         selectedReceiptsState += receipt
     }
 
-    override fun unselectReceipt(receipt: Receipt) {
+    private fun unselectReceipt(receipt: Receipt) {
         selectedReceiptsState -= receipt
+    }
+
+    override fun changeSelectionForReceipt(receipt: Receipt) {
+        if (receipt in selectedReceiptsState) {
+            unselectReceipt(receipt)
+        } else selectReceipt(receipt)
     }
 
     override fun deleteSelectedReceipts() {
@@ -44,5 +51,15 @@ class RealReceiptListComponent(
         }
     }
 
+    override fun onAddReceiptButtonClick() {
+        onOutput(ReceiptListComponent.Output.ReciptAddRequested)
+    }
 
+    override fun onReceiptClick(receiptId: ReceiptId) {
+        onOutput(ReceiptListComponent.Output.ReceiptEditingRequested(receiptId))
+    }
+
+    override fun onPersonButtonClicked() {
+        onOutput(ReceiptListComponent.Output.PersonsEditingRequested)
+    }
 }

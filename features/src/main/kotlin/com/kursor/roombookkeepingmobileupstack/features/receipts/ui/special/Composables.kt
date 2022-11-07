@@ -1,6 +1,5 @@
 package com.kursor.roombookkeepingmobileupstack.features.receipts.ui.special
 
-import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Divider
@@ -8,18 +7,15 @@ import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
-import com.kursor.roombookkeeping.R
+import com.kursor.roombookkeepingmobileupstack.features.R
 
 
 @Composable
 fun RoomBookkeepingTopAppBar(
-    navController: NavController,
     rightSideBlock: @Composable () -> Unit = { }
 ) {
     TopAppBar {
@@ -33,13 +29,6 @@ fun RoomBookkeepingTopAppBar(
         Spacer(
             modifier = Modifier
                 .weight(1f, fill = true)
-                .pointerInput(Unit) {
-                    detectTapGestures(
-                        onDoubleTap = {
-                            navController.navigate("nothingImportantHere")
-                        }
-                    )
-                }
         )
         rightSideBlock()
 

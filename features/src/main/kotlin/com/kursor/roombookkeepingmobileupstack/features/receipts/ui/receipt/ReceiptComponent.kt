@@ -20,7 +20,7 @@ interface ReceiptComponent {
 
     val outcomesState: Map<Person, Double>
 
-    var receipt: Receipt?
+    var receipt: Receipt
 
     fun changeName(name: String)
 

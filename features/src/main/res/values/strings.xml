@@ -3,4 +3,6 @@
     <string name="crypto_description">Description</string>
     <string name="crypto_categories">Categories</string>
     <string name="crypto_list">Crypto List</string>
+    <string name="add_receipt">Add receipt</string>
+    <string name="app_name">RoomBookkeeping</string>
 </resources>
